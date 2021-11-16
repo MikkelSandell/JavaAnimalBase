@@ -11,9 +11,9 @@ public class AnimalBase implements Comparable {
 
     public void start() {
         UserInterface ui = new UserInterface(this);
-        createNewAnimal("abelone", "large", "elephant",7);
         createNewAnimal("snifles","smalle", "cat",8);
         createNewAnimal("buttens","medium","doge",9);
+        createNewAnimal("abelone", "large", "elephant",7);
         ui.start();
     }
 
@@ -27,10 +27,12 @@ public class AnimalBase implements Comparable {
     }
 
     public void sortBy(String sort) {
-        // TODO: Implement sorting!
-        System.out.println("TODO: Sort the list of animals by: " + sort);
-        Collections.sort(animals);
-
+        System.out.println("Sort the list of animals by: " + sort);
+        switch (sort) {
+            case "name" -> animals.sort(new NameComperator());
+            case "age" -> animals.sort(new AgeComperator());
+            case "type" -> animals.sort(new TypeComerator());
+        }
     }
 
     public void createNewAnimal(String name, String description, String type, int age) {
