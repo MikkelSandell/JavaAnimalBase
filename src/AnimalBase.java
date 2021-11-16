@@ -26,17 +26,15 @@ public class AnimalBase implements Comparable {
         return animals;
     }
 
+    private SuperFlexibleComperator comperator = new SuperFlexibleComperator("name", "ASC");
+
     public void sortBy(String sort, String direction) {
         System.out.println("Sort the list of animals by: " + sort);
-        if (sort.equals("name")){
-            animals.sort(new SuperFlexibleComperator("name",direction));
-        }else if (sort.equals("age")){
-            animals.sort(new SuperFlexibleComperator("age",direction));
-        }else if (sort.equals("type")){
-            animals.sort(new SuperFlexibleComperator("type",direction));
+       comperator.setDirection(direction);
+       comperator.setType(sort);
+       Collections.sort(animals,comperator);
         }
 
-    }
 
     public void createNewAnimal(String name, String description, String type, int age) {
         Animal animal = new Animal(name,description,type,age);

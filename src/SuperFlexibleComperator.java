@@ -8,6 +8,22 @@ public class SuperFlexibleComperator implements Comparator<Animal> {
         this.direction = direction;
         this.type = type;
     }
+
+    public void setDirection(String direction){
+        if (direction.equals("TOGGLE")){
+            if (this.direction.equals("ASC")){
+                this.direction = "DESC";
+            }else{
+                this.direction = "ASC";
+            }
+        }else {
+            this.direction = direction;
+        }
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
     @Override
     public int compare(Animal o1, Animal o2) {
         int resultat =0;
